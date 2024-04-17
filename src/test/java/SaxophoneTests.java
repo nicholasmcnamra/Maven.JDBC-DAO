@@ -17,7 +17,7 @@ public class SaxophoneTests {
         SaxophonesDAO saxophonesDAO = new SaxophonesDAO();
         List<DTO> saxophones = saxophonesDAO.findAll();
         for (DTO saxophone : saxophones) {
-            String stringRep = String.format("Id: \nManufacturer: \nModel: \nVoice: \nNew: \n", saxophone.getId(), saxophone.getManufacturer(), saxophone.getModel(), saxophone.getVoice(), saxophone.isUnused());
+            String stringRep = String.format("Id: %s\nManufacturer: %s\nModel: %s\nVoice: %s\nNew: %s\n", saxophone.getId(), saxophone.getManufacturer(), saxophone.getModel(), saxophone.getVoice(), saxophone.isUnused());
             System.out.println(stringRep);
         }
         Assert.assertEquals(5, saxophonesDAO.findAll().size());

@@ -27,7 +27,7 @@ public class Saxophones implements DTO{
     }
 
     public int getId() {
-        return 0;
+        return id;
     }
     public void setId(int id) {
         this.id = id;

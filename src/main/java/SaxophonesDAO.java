@@ -108,7 +108,7 @@ public class SaxophonesDAO implements DAO<DTO>{
         saxophone.setId(rs.getInt("id"));
         saxophone.setManufacturer(rs.getString("Manufacturer"));
         saxophone.setModel(rs.getString("Model"));
-        saxophone.setModel(rs.getString("Voice"));
+        saxophone.setVoice(rs.getString("Voice"));
         saxophone.setUnused(rs.getBoolean("New"));
 
         return saxophone;
