@@ -1,15 +1,24 @@
-public class SaxophonesDTO implements DTO{
-    private int id;
+
+// maps to SQL Table
+public class Saxophones implements DTO{
+    private Integer id;
     private String manufacturer;
     private String model;
     private String voice;
-    private boolean unused;
+    private Boolean unused;
 
-    public SaxophonesDTO() {
+    public Saxophones() {
 
     }
 
-    public SaxophonesDTO(int id, String manufacturer, String model, String voice, boolean unused) {
+    public Saxophones(String manufacturer, String model, String voice, Boolean unused) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.voice = voice;
+        this.unused = unused;
+    }
+
+    public Saxophones(Integer id, String manufacturer, String model, String voice, Boolean unused) {
         this.id = id;
         this.manufacturer = manufacturer;
         this.model = model;
@@ -17,7 +26,6 @@ public class SaxophonesDTO implements DTO{
         this.unused = unused;
     }
 
-    @Override
     public int getId() {
         return 0;
     }
