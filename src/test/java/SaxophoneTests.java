@@ -22,4 +22,33 @@ public class SaxophoneTests {
         }
         Assert.assertEquals(5, saxophonesDAO.findAll().size());
     }
+
+    @Test
+    public void createTest() {
+        SaxophonesDAO saxophonesDAO = new SaxophonesDAO();
+        Saxophones saxophone = new Saxophones("Yanagisawa", "WO10", "Soprano", true);
+        saxophonesDAO.create(saxophone);
+
+        Assert.assertEquals(5, saxophonesDAO.findAll().size());
+        }
+
+        @Test
+        public void updateTest() throws SQLException {
+        SaxophonesDAO saxophonesDAO = new SaxophonesDAO();
+        Saxophones saxophone = (Saxophones) saxophonesDAO.findById(1);
+
+        saxophone.setModel("WO30");
+        saxophone.setVoice("Alto");
+        saxophone.setUnused(true);
+        saxophonesDAO.update(saxophone);
+        Assert.assertEquals(saxophone.getManufacturer(), saxophonesDAO.findById(1).getManufacturer());
+        }
+
+        @Test
+        public void deleteTest() {
+        SaxophonesDAO saxophonesDAO = new SaxophonesDAO();
+        saxophonesDAO.delete(2);
+
+        Assert.assertEquals(1, saxophonesDAO.findAll().size());
+        }
 }

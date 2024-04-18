@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 public class SaxophonesDAO implements DAO<DTO>{
+
+    private int nextId;
     @Override
     public DTO findById(int id) throws SQLException {
         try {
@@ -47,12 +49,11 @@ public class SaxophonesDAO implements DAO<DTO>{
     @Override
     public boolean create(DTO dto) {
         try {
-            PreparedStatement statement = Connection.getConnection().prepareStatement("INSERT INTO saxophones VALUES (?, ?, ?, ?, ?");
-            statement.setInt(1, dto.getId());
-            statement.setString(2, dto.getManufacturer());
-            statement.setString(3, dto.getModel());
-            statement.setString(4, dto.getVoice());
-            statement.setBoolean(5, dto.isUnused());
+            PreparedStatement statement = Connection.getConnection().prepareStatement("INSERT INTO saxophones (Manufacturer, Model, Voice, New) VALUES (?, ?, ?, ?)");
+            statement.setString(1, dto.getManufacturer());
+            statement.setString(2, dto.getModel());
+            statement.setString(3, dto.getVoice());
+            statement.setBoolean(4, dto.isUnused());
 
             int i = statement.executeUpdate();
 
@@ -68,12 +69,11 @@ public class SaxophonesDAO implements DAO<DTO>{
     @Override
     public boolean update(DTO dto) {
         try {
-            PreparedStatement statement = Connection.getConnection().prepareStatement("UPDATE saxophones SET id=?, Manufacturer=?, Model=?, Voice=?, New=?");
-            statement.setInt(1, dto.getId());
-            statement.setString(2, dto.getManufacturer());
-            statement.setString(3, dto.getModel());
-            statement.setString(4, dto.getVoice());
-            statement.setBoolean(5, dto.isUnused());
+            PreparedStatement statement = Connection.getConnection().prepareStatement("UPDATE saxophones SET Manufacturer=?, Model=?, Voice=?, New=? WHERE id=" + dto.getId());
+            statement.setString(1, dto.getManufacturer());
+            statement.setString(2, dto.getModel());
+            statement.setString(3, dto.getVoice());
+            statement.setBoolean(4, dto.isUnused());
 
             int i = statement.executeUpdate();
 
